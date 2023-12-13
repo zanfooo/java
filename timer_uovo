@@ -1,0 +1,31 @@
+public class zanforlin_uovo {
+    public static void main(String[] args) {
+
+        int min = 0, sec = 0, mil = 0;
+
+
+        do {
+            Timer();
+            mil = mil + 1;
+            while (mil > 99) {
+                mil = 0;
+                sec = sec + 1;
+            }
+            while (sec > 59) {
+                sec = 0;
+                min = min + 1;
+            }
+
+            System.out.println(min + ":" + sec + ":" + mil);
+        } while (min < 60);
+
+    }
+
+    private static void Timer() {
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
