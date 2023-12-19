@@ -1,0 +1,31 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner tastiera = new Scanner(System.in);
+
+        //Scomposizione del numero intero in cifre
+        int numero=0;
+        int resto;
+        int contaCifre=0;
+        /* 1) 1205 : 10 = 123 resto 5
+           2) 120 : 10 = 12 resto 0
+           3)12 : 10 = 1 resto 2
+           4)1 : 10 = 0 resto 1
+        */
+
+        System.out.println("Inserisci un numero ");
+        numero = tastiera.nextInt();
+        
+        while(numero!=0){
+            resto = numero % 10;
+            numero = numero / 10;
+            contaCifre = contaCifre + 1;
+            System.out.print(resto + " ");
+        }
+        if(contaCifre == 0){
+            System.out.println("Non è stato inserito un numero valido");
+        }else{
+            System.out.println("Il numero conteneva " + contaCifre + " cifre");
+        }
+    }
+}
