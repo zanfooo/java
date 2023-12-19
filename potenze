@@ -1,0 +1,21 @@
+import java.util.Scanner;
+public class Potenza{
+	public static void main(String [] args){
+    	Scanner tastiera = new Scanner(System.in);
+
+    	double a;
+    	int c;
+    	double f=0;
+   	 
+    	System.out.println("Inserisci un numero da elevare: ");
+    	a = tastiera.nextDouble();
+   	 
+    	System.out.println("Inserisci la potenza: ");
+    	c = tastiera.nextInt();
+   	 
+    	for(int i=0; i<c; i++){
+        	f = a * a;
+    	}
+    	System.out.println("Il risultato è :" + f);
+	}
+}
