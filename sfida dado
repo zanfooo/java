@@ -1,0 +1,119 @@
+import java.util.Random;
+import java.util.Scanner;
+public class Dado {
+    public static void main(String[] args) {
+        Random valore = new Random();
+        //Dichiarazione delle variabili
+        int Giocatore1, Giocatore2;
+        String nome1;
+        String nome2;
+        Scanner tastiera = new Scanner(System.in);
+
+        do {
+            Giocatore1 = valore.nextInt(6) + 1;
+            Giocatore2 = valore.nextInt(6) + 1;
+        } while (Giocatore1 == Giocatore2);
+
+        //Turno del primo giocatore
+        System.out.println("Come ti chiami?");
+        nome1 = tastiera.next();
+        System.out.println(nome1 + " lancia il dado");
+        attesa(1);
+        dado(Giocatore1);
+        System.out.println("E' uscita la faccia numero " + Giocatore1);
+
+        attesa(1);
+
+        //Turno del secondo giocatore
+        System.out.println("Come ti chiami?");
+        nome2 = tastiera.next();
+        System.out.println(nome2 + " lancia il dado");
+        attesa(1);
+        dado(Giocatore2);
+        System.out.println("E' uscita la faccia numero " + Giocatore2);
+
+        attesa(1);
+
+        //Dectreto vincitore
+        if (Giocatore1 > Giocatore2) {
+            System.out.println("Vince: " + nome1);
+        } else if (Giocatore2 > Giocatore1) {
+            System.out.println("Vince: " + nome2);
+        } else {
+            System.out.println("Parità");
+        }
+    }
+
+    public static void dado(int faccia) {
+        switch (faccia) {
+            case 1:
+                System.out.println("\t\t\t\t ╔════════╗");
+                System.out.println("\t\t\t\t ║        ║");
+                System.out.println("\t\t\t\t ║    0   ║");
+                System.out.println("\t\t\t\t ║        ║");
+                System.out.println("\t\t\t\t ╚════════╝");
+                break;
+            case 2:
+                System.out.println("\t\t\t\t ╔════════╗");
+                System.out.println("\t\t\t\t ║0       ║");
+                System.out.println("\t\t\t\t ║        ║");
+                System.out.println("\t\t\t\t ║       0║");
+                System.out.println("\t\t\t\t ╚════════╝");
+                break;
+            case 3:
+                System.out.println("\t\t\t\t ╔════════╗");
+                System.out.println("\t\t\t\t ║0       ║");
+                System.out.println("\t\t\t\t ║    0   ║");
+                System.out.println("\t\t\t\t ║       0║");
+                System.out.println("\t\t\t\t ╚════════╝");
+                break;
+            case 4:
+                System.out.println("\t\t\t\t ╔════════╗");
+                System.out.println("\t\t\t\t ║0      0║");
+                System.out.println("\t\t\t\t ║        ║");
+                System.out.println("\t\t\t\t ║0      0║");
+                System.out.println("\t\t\t\t ╚════════╝");
+                break;
+            case 5:
+                System.out.println("\t\t\t\t ╔════════╗");
+                System.out.println("\t\t\t\t ║0      0║");
+                System.out.println("\t\t\t\t ║    0   ║");
+                System.out.println("\t\t\t\t ║0      0║");
+                System.out.println("\t\t\t\t ╚════════╝");
+                break;
+            case 6:
+                System.out.println("\t\t\t\t ╔════════╗");
+                System.out.println("\t\t\t\t ║0      0║");
+                System.out.println("\t\t\t\t ║0      0║");
+                System.out.println("\t\t\t\t ║0      0║");
+                System.out.println("\t\t\t\t ╚════════╝");
+                break;
+            default:
+                System.out.println("Valore non valido");
+                break;
+        }
+    }
+
+    public static void attesa(int x) {
+        try {
+            Thread.sleep(1000 * x);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void cls() {
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (Exception E) {
+            System.out.println(E);
+        }
+    }
+
+    //private static void generaNumero(int min, int max) {
+    private static int generaNumero(int min, int max) {
+        Random casuale = new Random();
+        return casuale.nextInt(min, max) + 1;
+        //System.out.println(valFaccia);
+    }
+}
