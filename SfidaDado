@@ -10,8 +10,8 @@ public class SfidaDado {
         Scanner tastiera = new Scanner(System.in);
 
         do {
-            Giocatore1 = valore.nextInt(6) + 1;
-            Giocatore2 = valore.nextInt(6) + 1;
+            Giocatore1 = valore.nextInt(0,6) + 1;
+            Giocatore2 = valore.nextInt(0,6) + 1;
         } while (Giocatore1 == Giocatore2);
 
         //Turno del primo giocatore
