@@ -1,4 +1,4 @@
-public class zanforlin_uovo {
+public class timerUovo {
     public static void main(String[] args) {
 
         int min = 0, sec = 0, mil = 0;
