@@ -1,6 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
-public class Dado {
+public class SfidaDado {
     public static void main(String[] args) {
         Random valore = new Random();
         //Dichiarazione delle variabili
@@ -34,7 +34,7 @@ public class Dado {
 
         attesa(1);
 
-        //Dectreto vincitore
+        //Decreto vincitore
         if (Giocatore1 > Giocatore2) {
             System.out.println("Vince: " + nome1);
         } else if (Giocatore2 > Giocatore1) {
