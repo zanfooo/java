@@ -1,4 +1,4 @@
-public class CucinaUovo {
+public class UovoCotto {
     public static void main(String[] args) {
 
         ClrScr();
