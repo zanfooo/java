@@ -1,4 +1,4 @@
-public class timerUovo {
+public class imerUovo {
     public static void main(String[] args) {
 
         int min = 0, sec = 0, mil = 0;
