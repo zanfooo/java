@@ -100,23 +100,17 @@ public class AppNumeri {
         int casuale;
         int[] vettore = new int[n];
         Random rn = new Random();
+        boolean[] numeriGenerati = new boolean[101]; //Controllo dei numeri già generati
         for(int i=0;i<n;i++){
             casuale = rn.nextInt(1, 101);
-            boolean trovato = false
-            //inizio ciclo do while che finisce quando il trovato diventa true
+            do {
+                casuale = rn.nextInt(101);
+            } while (numeriGenerati[casuale]); //Ripeti il ciclo se il numero è già stato generato
 
-            //ciclo for di verifica che non sia doppio
-            for
-            trovato=true;
-            if (trovato=false) {
-                //inserisco nel vettore
-                vettore[i] = casuale;
-                break;
-            } else {
-                //trovato true.. numero doppio.. non lo inserisci
-            }
-            
+            numeriGenerati[casuale] = true;
+            vettore[i] = casuale;
         }
+
         return vettore;
     }
     private static void visualizza(int[] v){
@@ -125,4 +119,5 @@ public class AppNumeri {
         }
 
     }
+
 }
