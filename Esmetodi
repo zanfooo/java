@@ -1,0 +1,63 @@
+import java.util.Scanner;
+
+public class Esmetodi {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Ask the user to enter two integers
+        System.out.print("Enter the first number (a): ");
+        int a = scanner.nextInt();
+
+        System.out.print("Enter the second number (b): ");
+        int b = scanner.nextInt();
+
+        // Close the scanner after obtaining the numbers
+        scanner.close();
+
+        // Calls to functions with the entered numbers
+        int sumResult = Sum(a, b);
+        int differenceResult = Difference(a, b);
+        int multiplicationResult = Multiplication(a, b);
+        double divisionResult = Division(a, b);
+        int powerResult = Power(a, b); //double is better, cause big results
+
+        // Print the results
+        System.out.println("Sum: " + sumResult);
+        System.out.println("Difference: " + differenceResult);
+        System.out.println("Multiplication: " + multiplicationResult);
+        System.out.println("Division: " + divisionResult);
+        System.out.println("Power: " + powerResult);
+        System.out.println("Goodbye bro");
+    }
+
+    public static int Sum(int x, int y) {
+        int sum = x + y;
+        return sum;
+    }
+
+    public static int Difference(int x, int y) {
+        int difference = x - y;
+        return difference;
+    }
+
+    public static int Multiplication(int x, int y) {
+        int multiplication = x * y;
+        return multiplication;
+    }
+
+    public static double Division(double x, double y) {
+        double division = x / y;
+        return division;
+    }
+
+    public static int Power(int x, int y) {
+        for (int i = 0; i < y; i++) {
+            x = x * x;
+            i = i + 1;
+        }
+
+        return x;
+    }
+}
+
