@@ -1,0 +1,34 @@
+import java.util.Scanner;
+public class Caratterialfa {
+    public static void main(String[] args) {
+        Scanner tastiera = new Scanner(System.in);
+        boolean risultato;
+        String stringa;
+        System.out.println("Inserisci la stringa: ");
+        stringa = tastiera.nextLine();
+//        tastiera.nextLine();
+
+        risultato = Carattere(stringa);
+        if(risultato == true){
+            System.out.println("Tutti alfabetici");
+        } else System.out.println("Stringa errata");
+
+    }
+    private static Boolean Carattere(String stringa){
+        boolean let = true;
+        // questo ciclo scrive ogni lettera per la parola corrente vettore[i]
+        for(int y = 0; y<stringa.length(); y++){
+            System.out.println("lettera:"+ (stringa.charAt(y)));
+
+            if(Character.isUpperCase(stringa.charAt(y))){
+                //let = true;
+            } else if(Character.isLowerCase(stringa.charAt(y))){
+                //let = true;
+            } else{
+                let = false;
+            }
+
+        }
+
+        return let; }
+}
