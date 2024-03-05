@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class Data {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        //Dichiaro le variabili
+        int data, anno, giorno, numeroMese;
+        String mese;
+        String[] nomiMesi = {"gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno",
+                "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"};
+
+        //Chiedo all' utente la data
+        System.out.print("Inserisci la data nel formato ggmmaaaa: ");
+        data = scanner.nextInt();
+
+        //Ricavo l'anno e aggiorno il valore della data
+        anno = data % 10000;
+        data /= 10000;
+
+        //Estrai il mese come stringa
+        numeroMese = data % 100;
+        mese = nomiMesi[numeroMese - 1];
+
+        //Rimuovi il mese dalla data rimanente
+        giorno = data / 100;
+
+        System.out.println("giorno=" + giorno);
+        System.out.println("mese=" + mese);
+        System.out.println("anno=" + anno);
+    }
+}
