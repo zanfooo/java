@@ -1,0 +1,98 @@
+import java.util.Scanner;
+import Tools.Utility.*;
+import static Tools.Utility.menu;
+public class Main {
+    public static void main(String[] args) {
+        Scanner tastiera = new Scanner(System.in);
+        int contaAuto = 0;
+        final int maxAuto = 3;
+        boolean uscita = false;
+        Auto[] gestore = new Auto[maxAuto];
+        String[] opzioni = {"Gestore auto", "1- Inserimento", "2-Visualizza", "3-Ricerca", "4-Elimina", "5-Fine"};
+        do {
+            switch (menu(opzioni, tastiera)) {
+
+                case 1:
+                    if (contaAuto < maxAuto) {
+                        gestore[contaAuto] = inserimento(tastiera);
+                        contaAuto++;
+                    }
+                    break;
+                case 2:
+                    if (contaAuto > 0) {
+                        visualizza(gestore, contaAuto);
+                    } else {
+                        System.out.println("Nessuna auto inserita.");
+                    }
+                    break;
+                case 3:
+                    if (contaAuto > 0) {
+                        ricerca(gestore, contaAuto, tastiera);
+                    } else {
+                        System.out.println("Nessuna auto inserita.");
+                    }
+                    break;
+                case 4:
+
+                    break;
+                case 5:
+                    uscita = true;
+                    break;
+            }
+        } while (!uscita);
+    }
+    public static Auto inserimento(Scanner tastiera) {
+        Auto macchina = new Auto();
+        System.out.println("Inserisci la marca");
+        macchina.marca = tastiera.nextLine();
+        System.out.println("Inserisci il modello");
+        macchina.modello = tastiera.nextLine();
+        String[] opzioni = {"Inserisci l'alimentazione", "1-gpl", "2-benzina", "3-metano"};
+
+        int scelta;
+        do {
+            scelta = menu(opzioni, tastiera);
+            switch (scelta) {
+                case 1:
+                    macchina.alimentazione = Auto.Combustibile.gpl;
+                    break;
+                case 2:
+                    macchina.alimentazione = Auto.Combustibile.benzina;
+                    break;
+                case 3:
+                    macchina.alimentazione = Auto.Combustibile.metano;
+                    break;
+                default:
+                    System.out.println("Scelta non valida, riprova.");
+            }
+        } while (scelta < 1 || scelta > 3);
+        return macchina;
+    }
+    public static void visualizza(Auto[] gestore, int contaAuto) {
+        for (int i = 0; i < contaAuto; i++) {
+            System.out.println("Auto " + (i + 1) + ":");
+            System.out.println("Marca: " + gestore[i].marca);
+            System.out.println("Modello: " + gestore[i].modello);
+            System.out.println("Alimentazione: " + gestore[i].alimentazione);
+            System.out.println();
+        }
+    }
+    public static void ricerca(Auto[] gestore, int contaAuto, Scanner tastiera) {
+        System.out.println("Inserisci la marca da cercare:");
+        String marcaCercata = tastiera.nextLine();
+        boolean trovato = false;
+        for (int i = 0; i < contaAuto; i++) {
+            if (gestore[i].marca.equalsIgnoreCase(marcaCercata)) {
+                trovato = true;
+                System.out.println("Auto trovata:");
+                System.out.println("Marca: " + gestore[i].marca);
+                System.out.println("Modello: " + gestore[i].modello);
+                System.out.println("Alimentazione: " + gestore[i].alimentazione);
+                System.out.println();
+            }
+        }
+        if (!trovato) {
+            System.out.println("Nessuna auto trovata con la marca inserita.");
+        }
+    }
+}
