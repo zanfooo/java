@@ -1,0 +1,68 @@
+import java.util.Arrays;
+
+public class Main {
+
+    public static void main(String[] args) {
+        int[] array = {9, 3, 6, 2, 5, 8, 1, 4, 7, 6};
+        
+        // Ordinare l'array con numeri dispari crescenti, numeri pari crescenti
+        ordinaArray(array);
+        System.out.println("Array ordinato con numeri dispari crescenti, numeri pari crescenti:");
+        stampaArray(array);
+        
+        // Ordinare l'array con numeri dispari crescenti, numeri pari crescenti eliminando i duplicati
+        ordinaArraySenzaDuplicati(array);
+        System.out.println("Array ordinato con numeri dispari crescenti, numeri pari crescenti senza duplicati:");
+        stampaArray(array);
+    }
+    
+    public static void ordinaArray(int[] array) {
+        // Bubble sort per numeri dispari
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] % 2 != 0 && array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+        
+        // Bubble sort per numeri pari
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] % 2 == 0 && array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+    }
+    
+    public static void ordinaArraySenzaDuplicati(int[] array) {
+        // Rimuovere i duplicati
+        int index = 0;
+        for (int i = 0; i < array.length; i++) {
+            boolean isDuplicate = false;
+            for (int j = 0; j < i; j++) {
+                if (array[i] == array[j]) {
+                    isDuplicate = true;
+                    break;
+                }
+            }
+            if (!isDuplicate) {
+                array[index++] = array[i];
+            }
+        }
+        // Ordinare l'array risultante
+        ordinaArray(Arrays.copyOf(array, index));
+    }
+    
+    public static void stampaArray(int[] array) {
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+}
