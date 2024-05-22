@@ -1,0 +1,183 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class OrdinaPari {
+    public static void main(String[]args) {
+        Scanner scanner = new Scanner(System.in);
+
+        //chiedo all'utente quanti numeri voglia inserire
+        System.out.println("Quanti numeri vuoi inserire? (tra 8 e 10): ");
+        int num = 0;
+
+        //controllo che il numero inserito sia compreso tra 8 e 10
+        while (num < 8 || num > 10) {
+            num = scanner.nextInt();
+            scanner.nextLine();
+            if (num < 8 || num > 10) {
+                System.out.println("Devi inserire tra 8 e 10 numeri. Riprova.");
+            }
+        }
+
+        //array per memorizzare i numeri inseriti dall'utente e array per i pari
+        int[] array = new int[num];
+        int[] pariArray = new int[num];
+        int iPari = 0;
+
+        //popolo l'array
+        for (int i = 0; i < num; i++) {
+            System.out.print("Inserisci il " + (i + 1) + "° numero: ");
+            int numero = scanner.nextInt();
+            scanner.nextLine();
+
+            //controllo che il numero inserito sia valido
+            if (numero < 1 || numero > 30) {
+                System.out.println("Numero non valido. Deve essere tra 1 e 30.");
+                i--;
+                continue;
+            }
+
+            //se il numero è pari lo inserisco nell'array dei numeri pari
+            if (numero % 2 == 0) {
+                pariArray[iPari++] = numero;
+            }
+
+            //inserisco il numero nell'array originale
+            array[i] = numero;
+        }
+
+        //ridimensiono l'array dei numeri pari per contenere solo i numeri effettivamente inseriti
+        int[] numeriPariEffettivi = new int[iPari];
+        for (int i = 0; i < iPari; i++) {
+            numeriPariEffettivi[i] = pariArray[i];
+        }
+        ordinaPariBubbleSort(numeriPariEffettivi);
+
+        //stampo l'array originale
+        System.out.println("Input originale: " + Arrays.toString(array));
+
+        //reinserisco i numeri pari ordinati nell'array originale mantenendo gli altri numeri invariati
+        int IndicePariArray = 0;
+        for (int i = 0; i < num; i++) {
+            if (array[i] % 2 == 0) {
+                array[i] = numeriPariEffettivi[IndicePariArray++];
+            }
+        }
+
+        //stampo l'array ordinato
+        System.out.println("Output ordinato: " + Arrays.toString(array));
+    }
+
+    //metodo per ordinare i numeri pari con il bubble sort
+    public static void ordinaPariBubbleSort(int[] array) {
+        boolean swapped;
+        do {
+            swapped = false;
+            //uso un ciclo for per scorrere l'array e ordinare i numeri pari
+            for (int i = 0; i < array.length - 1; i++) {
+                if (array[i] > array[i + 1]) {
+                    //scambio i due numeri
+                    int temp = array[i];
+                    array[i] = array[i + 1];
+                    array[i + 1] = temp;
+                    //imposto swapped a true per indicare che sono stati effettuati scambi
+                    swapped = true;
+                }
+            }
+            //continua finché ci sono stati scambi durante l'ordinamento
+        } while (swapped);
+    }
+}
+
+
+
+/*import java.util.Arrays;
+import java.util.Scanner;
+
+public class OrdinaPari {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        //dichiarazione e inizializzazione dell'array di numeri
+        int[] array = new int[10];
+        int num = 0;
+
+        //chiedo alll utente quanti numeri voglia inserire
+        System.out.println("Quanti numeri vuoi inserire? (tra 8 e 10): ");
+
+        //ciclo per controllare che il numero inserito sia compreso tra 8 e 10
+        while (num < 8 || num > 10) {
+            System.out.print("Inserisci un numero: ");
+            num = scanner.nextInt();
+            scanner.nextLine();
+            if (num < 8 || num > 10) {
+                System.out.println("Devi inserire tra 8 e 10 numeri. Riprova.");
+            }
+        }
+
+        //ciclo per popolare l array
+        for (int i = 0; i < num; i++) {
+            System.out.print("Inserisci il " + (i + 1) + "° numero: ");
+            int number = scanner.nextInt();
+            scanner.nextLine();
+
+            //controllo che il numero inserito sia valido
+            if (number < 1 || number > 30) {
+                System.out.println("Numero non valido. Deve essere tra 1 e 30.");
+                //decremento i per permettere di reinserire il numero corrente
+                i--;
+            }
+
+            //controllo se il numero inserito è duplicato
+            boolean isDuplicate = false;
+            for (int j = 0; j < i; j++) {
+                if (array[j] == number) {
+                    isDuplicate = true;
+                    break;
+                }
+            }
+
+            //reinserimento del numero duplicato
+            if (isDuplicate) {
+                System.out.println("Numero duplicato. Inserisci un numero unico.");
+                i--;
+            } else {
+                array[i] = number;
+            }
+        }
+
+        //stampo l array disordinato e ordinato
+        System.out.println("Input" + Arrays.toString(array));
+        ordinaPariBubbleSort(array);
+        System.out.println("Output ordinato: " + Arrays.toString(array));
+    }
+
+    //metodo per ordinare i numeri pari con il bubble sort
+    public static void ordinaPariBubbleSort(int[] array) {
+        boolean Swapped;
+        do {
+            Swapped = false;
+            //ciclo for per scorrere l'array e ordinare i numeri pari
+            for (int i = 0; i < array.length - 1; i++) {
+                if (array[i] % 2 == 0 && array[i + 1] % 2 == 0 && array[i] > array[i + 1]) {
+                    //scambio i due numeri
+                    int temp = array[i];
+                    array[i] = array[i + 1];
+                    array[i + 1] = temp;
+                    //imposto swapped a true per indicare che sono stati effettuati scambi
+                    Swapped = true;
+                }
+            }
+            //continua finché ci sono stati scambi durante l'ordinamento
+        } while (Swapped);
+    }
+}
+
+
+
+Inizialmente avevo provato scrivendo il codice con questa
+strategia risolutiva cioè di modificare il bubble sort ma
+non ci sono riuscito infatti non funziona quindi ho scelto
+di passare alla creazione di un secondo array dove inserire
+i numeri pari, numeriPariEffettivi con la dimensione esatta
+dei numeri pari raccolti, copiandovi i numeri dal pariArray
+originale fino alla posizione iPari.
+*/
