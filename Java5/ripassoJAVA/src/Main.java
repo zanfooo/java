@@ -60,9 +60,10 @@ public class Main {
                     break;
 
                 case 5:
-                    int[] conteggi = GestoreTesti.contaVocaliConsonanti(frase);
-                    System.out.println("Vocali: " + conteggi[0]);
-                    System.out.println("Consonanti: " + conteggi[1]);
+                    int vocali = GestoreTesti.contaVocali(frase);
+                    System.out.println("Vocali: " + vocali);
+                    int consonanti = GestoreTesti.contaConsonanti(frase);
+                    System.out.println("Consonanti: " + consonanti);
                     break;
 
                 case 6:
