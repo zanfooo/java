@@ -42,26 +42,40 @@ public final class GestoreTesti {
         return frase.replaceAll(daSostituire, nuovaParola);
     }
 
-    /**
-     * Conta il numero di vocali e consonanti nella frase.
+   /**
+     * metodo conta vocali in una stringa
      *
-     * @param frase la frase da analizzare
-     * @return un array di due elementi: [vocali, consonanti]
+     * @param str stringa
+     * @return numero vocali
      */
-    public static int[] contaVocaliConsonanti(String frase) {
-        int vocali = 0, consonanti = 0;
-        frase = frase.toLowerCase();
-
-        for (char c : frase.toCharArray()) {
-            if (Character.isLetter(c)) {
-                if ("aeiou".indexOf(c) != -1)
-                    vocali++;
-                else
-                    consonanti++;
-            }
+    public static int contaVocali(String str) {
+        int cont = 0;
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
+                    c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U')
+                cont++;
         }
-        return new int[]{vocali, consonanti};
+        return cont;
     }
+
+    /**
+     * metodo conta consonanti in una stringa
+     *
+     * @param str stringa
+     * @return numero consonanti
+     */
+    public static int contaConsonanti(String str) {
+        int cont = 0;
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (!(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
+                    c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U' || c == ' '))
+                cont++;
+        }
+        return cont;
+    }
+
 
     /**
      * Inverte l'ordine dei caratteri nella frase.
@@ -86,3 +100,4 @@ public final class GestoreTesti {
         return frase.substring(inizio, fine);
     }
 }
+
