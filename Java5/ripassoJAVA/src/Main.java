@@ -1,3 +1,8 @@
+/**
+ * @author Nicolò Zanforlin
+ * @version 1.0
+ * @since 02/10/2025
+ */
 import tools.GestoreTesti;
 import tools.Utility;
 
